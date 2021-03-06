@@ -26,7 +26,9 @@ header h1 {
 }
 
 body {
-  background-color: #c01515;
+  background-image: url("../image_uploads/stadium.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .container {

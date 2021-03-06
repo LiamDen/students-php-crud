@@ -1,50 +1,39 @@
+DROP DATABASE IF EXISTS serversideca;
+CREATE DATABASE IF NOT EXISTS serversideca;
+USE serversideca;
+Drop Table if exists teams, league;
 
---
--- Table structure for table `records`
---
 
-CREATE TABLE `records` (
-  `recordID` int(11) NOT NULL,
-  `categoryID` int(11) NOT NULL,
+CREATE TABLE leagues (
+  leagueID int(11) NOT NULL AUTO_INCREMENT,
+  leagueName varchar(255) NOT NULL,
+	PRIMARY KEY (leagueID)
+);
+
+
+CREATE TABLE teams (
+  `teamID` int(11) NOT NULL AUTO_INCREMENT,
+  `foundingDate` DATE NOT NULL,
+  `leagueID` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `value` decimal(10,2) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `colour` varchar(255) NOT NULL,
+    PRIMARY KEY (teamID),
+FOREIGN KEY (leagueID) REFERENCES leagues(leagueID));
 
---
--- Dumping data for table `records`
---
+INSERT INTO `leagues` (`leagueID`, `leagueName`) VALUES
+(1, 'Premier League'),
+(2, 'Championship');
 
-INSERT INTO `records` (`recordID`, `categoryID`, `name`, `price`, `image`) VALUES
-(1, 1, 'Some text', '12.00', '644471.jpg'),
-(2, 1, 'Some text', '15.00', '233012.jpg'),
-(3, 1, 'Some text', '18.00', '329484.jpg'),
-(4, 1, 'Some text', '10.00', '644055.jpg'),
-(5, 2, 'Some text', '16.00', '373465.jpg'),
-(6, 2, 'Some text', '19.00', '373989.jpg'),
-(7, 2, 'Some text', '12.00', '374104.jpg'),
-(8, 2, 'Some text', '10.00', '4733.jpg'),
-(9, 2, 'Some text', '15.00', '834551.jpg'),
-(10, 3, 'Some text', '13.00', '908783.jpg'),
-(11, 3, 'Some text', '17.00', '835545.jpg'),
-(12, 3, 'Some text', '19.00', '119273.jpg');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `records`
---
-ALTER TABLE `records`
-  ADD PRIMARY KEY (`recordID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `records`
---
-ALTER TABLE `records`
-  MODIFY `recordID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+INSERT INTO `teams` (`teamID`, `foundingDate`, `leagueID`, `name`, `value`, `image`,`colour`) VALUES
+(1, '1874-11-24',  1, 'Aston Villa', '999', '', 'Red/ Blue'),
+(2, '1877-01-01', 1, 'Everton', '750', '', 'Blue'),
+(3, '1878-01-01',  1, 'Manchester United', '875', '', 'Red'),
+(4, '1880-01-01', 1, 'Manchester City', '1250.20','', 'Blue'),
+(5, '1882-09-05',  1, 'Tottenham Hotspur', '1205', '', 'White'),
+(6, '1892-03-15', 1, 'Liverpool', '750', '', 'Red'),
+(7, '1863-01-01',  2, 'Stoke City', '999','', 'Red/ White'),
+(8, '1867-01-01',  2, 'Sheffield Wednesday', '600', '' , 'Blue/ White'),
+(9, '1881-01-01', 2, 'Watford', '160.50', '', 'Yellow'),
+(10, '1882-01-01',  2, 'QPR', '200', '', 'Blue/ White');

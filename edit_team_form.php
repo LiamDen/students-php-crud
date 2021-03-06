@@ -23,9 +23,9 @@ include('includes/header.php');
             <input type="hidden" name="team_id"
                    value="<?php echo $teams['teamID']; ?>">
 
-            <label>Category ID:</label>
-            <input type="category_id" name="category_id"
-                   value="<?php echo $teams['categoryID']; ?>">
+            <label>League ID:</label>
+            <input type="league_id" name="league_id"
+                   value="<?php echo $teams['leagueID']; ?>">
             <br>
 
             <label>Name:</label>

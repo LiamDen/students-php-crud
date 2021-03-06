@@ -1,13 +1,13 @@
 <?php
 
 // Get the product data
-$category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
+$league_id = filter_input(INPUT_POST, 'league_id', FILTER_VALIDATE_INT);
 $name = filter_input(INPUT_POST, 'name');
 $value = filter_input(INPUT_POST, 'value', FILTER_VALIDATE_FLOAT);
 $colour = filter_input(INPUT_POST, 'colour');
 
 // Validate inputs
-if ($category_id == null || $category_id == false ||
+if ($league_id == null || $league_id == false ||
     $name == null || $value == null || $value == false || $colour == false ) {
     $error = "Invalid product data. Check all fields and try again.";
     include('error.php');
@@ -64,11 +64,11 @@ if ($category_id == null || $category_id == false ||
 
     // Add the product to the database 
     $query = "INSERT INTO teams
-                 (categoryID, name, value, colour, image)
+                 (leagueID, name, value, colour, image)
               VALUES
-                 (:category_id, :name, :value, :colour, :image)";
+                 (:league_id, :name, :value, :colour, :image)";
     $statement = $db->prepare($query);
-    $statement->bindValue(':category_id', $category_id);
+    $statement->bindValue(':league_id', $league_id);
     $statement->bindValue(':name', $name);
     $statement->bindValue(':value', $value);
     $statement->bindValue(':colour', $colour);

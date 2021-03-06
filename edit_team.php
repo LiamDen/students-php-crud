@@ -2,14 +2,14 @@
 
 // Get the team data
 $team_id = filter_input(INPUT_POST, 'team_id', FILTER_VALIDATE_INT);
-$category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
+$league_id = filter_input(INPUT_POST, 'league_id', FILTER_VALIDATE_INT);
 $name = filter_input(INPUT_POST, 'name');
 $value = filter_input(INPUT_POST, 'value', FILTER_VALIDATE_FLOAT);
 $colour = filter_input(INPUT_POST, 'colour');
 
 // Validate inputs
-if ($team_id == NULL || $team_id == FALSE || $category_id == NULL ||
-$category_id == FALSE || empty($name) ||
+if ($team_id == NULL || $team_id == FALSE || $league_id == NULL ||
+$league_id == FALSE || empty($name) ||
 $value == NULL || $value == FALSE || $colour == null) {
 $error = "Invalid team data. Check all fields and try again.";
 include('error.php');
@@ -50,14 +50,14 @@ $image = $original_image; // old image from database
 require_once('database.php');
 
 $query = 'UPDATE teams
-SET categoryID = :category_id,
+SET leagueID = :league_id,
 name = :name,
 value = :value,
 colour = :colour,
 image = :image
 WHERE teamID = :team_id';
 $statement = $db->prepare($query);
-$statement->bindValue(':category_id', $category_id);
+$statement->bindValue(':league_id', $league_id);
 $statement->bindValue(':name', $name);
 $statement->bindValue(':value', $value);
 $statement->bindValue(':colour', $colour);

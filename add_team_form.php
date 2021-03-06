@@ -1,11 +1,11 @@
 <?php
 require('database.php');
 $query = 'SELECT *
-          FROM categories
-          ORDER BY categoryID';
+          FROM leagues
+          ORDER BY leagueID';
 $statement = $db->prepare($query);
 $statement->execute();
-$categories = $statement->fetchAll();
+$leagues = $statement->fetchAll();
 $statement->closeCursor();
 ?>
 <!-- the head section -->
@@ -17,11 +17,11 @@ include('includes/header.php');
         <form action="add_team.php" method="post" enctype="multipart/form-data"
               id="add_team_form">
 
-            <label>Category:</label>
-            <select name="category_id">
-            <?php foreach ($categories as $category) : ?>
-                <option value="<?php echo $category['categoryID']; ?>">
-                    <?php echo $category['categoryName']; ?>
+            <label>League:</label>
+            <select name="league_id">
+            <?php foreach ($leagues as $league) : ?>
+                <option value="<?php echo $league['leagueID']; ?>">
+                    <?php echo $league['leagueName']; ?>
                 </option>
             <?php endforeach; ?>
             </select>

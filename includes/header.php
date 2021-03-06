@@ -6,4 +6,4 @@
 
 <!-- the body section -->
 <body>
-<header><h1>My PHP CRUD app</h1></header>
+<header><h1>English Teams</h1></header>
