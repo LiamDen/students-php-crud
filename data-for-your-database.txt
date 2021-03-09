@@ -3,7 +3,6 @@ CREATE DATABASE IF NOT EXISTS serversideca;
 USE serversideca;
 Drop Table if exists teams, league;
 
-
 CREATE TABLE leagues (
   leagueID int(11) NOT NULL AUTO_INCREMENT,
   leagueName varchar(255) NOT NULL,
