@@ -33,6 +33,11 @@ include('includes/header.php');
                    value="<?php echo $teams['name']; ?>">
             <br>
 
+            <label>Founding Date:</label>
+            <input type="input" name="foundingDate"
+                   value="<?php echo $teams['foundingDate']; ?>">
+            <br>
+
             <label>Value:</label>
             <input type="input" name="value"
                    value="<?php echo $teams['value']; ?>">

@@ -3,6 +3,7 @@
 // Get the product data
 $league_id = filter_input(INPUT_POST, 'league_id', FILTER_VALIDATE_INT);
 $name = filter_input(INPUT_POST, 'name');
+$foundingDate = filter_input(INPUT_POST, 'foundingDate');
 $value = filter_input(INPUT_POST, 'value', FILTER_VALIDATE_FLOAT);
 $colour = filter_input(INPUT_POST, 'colour');
 
@@ -64,12 +65,13 @@ if ($league_id == null || $league_id == false ||
 
     // Add the product to the database 
     $query = "INSERT INTO teams
-                 (leagueID, name, value, colour, image)
+                 (leagueID, name, foundingDate, value, colour, image)
               VALUES
-                 (:league_id, :name, :value, :colour, :image)";
+                 (:league_id, :name, :foundingDate, :value, :colour, :image)";
     $statement = $db->prepare($query);
     $statement->bindValue(':league_id', $league_id);
     $statement->bindValue(':name', $name);
+    $statement->bindValue(':foundingDate', $foundingDate);
     $statement->bindValue(':value', $value);
     $statement->bindValue(':colour', $colour);
     $statement->bindValue(':image', $image);

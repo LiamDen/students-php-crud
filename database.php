@@ -10,4 +10,21 @@
         include('database_error.php');
         exit();
     }
+
+    // switch($_GET['dir']){
+
+    //     case "asc":
+    //       $orderBy = " ORDER BY name ASC"
+    //      //break;
+        
+    //     case "desc":
+    //       $orderBy = " ORDER BY name DESC"
+    //      //break;
+        
+    //     default:
+    //       $orderBy = " ORDER BY name ASC"
+    //      //break;
+    //     }
+
+        
 ?>

@@ -98,6 +98,8 @@ value="<?php echo $team['leagueID']; ?>">
 </tr>
 <?php endforeach; ?>
 </table>
+<!-- <a href="database.php?dir=asc">Order ascending</a> 
+<a href="database.php?dir=desc">Order descending</a> -->
 <p><a href="add_team_form.php">Add team</a></p>
 <p><a href="league_list.php">Manage Leagues</a></p>
 </section>

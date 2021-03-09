@@ -31,6 +31,10 @@ include('includes/header.php');
             <br>
 
             <label>List Value:</label>
+            <input type="input" name="foundingDate" placeholder = "Founding Date">
+            <br>
+
+            <label>List Value:</label>
             <input type="input" name="value" placeholder = "Team Value">
             <br>
             
