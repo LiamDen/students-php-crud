@@ -37,13 +37,28 @@ $statement3->bindValue(':league_id', $league_id);
 $statement3->execute();
 $teams = $statement3->fetchAll();
 $statement3->closeCursor();
+
+  function sortTable() {
+    $queryteams = "SELECT * FROM teams
+    WHERE leagueID = :league_id
+    ORDER BY name";
+    $statement3 = $db->prepare($queryteams);
+    $statement3->bindValue(':league_id', $league_id);
+    $statement3->execute();
+    $teams = $statement3->fetchAll();
+    $statement3->closeCursor();
+
+  }
+
+  if (isset($_GET['hello'])) {
+    sortTable();
+  }
 ?>
 <div class="container">
 <?php
 include('includes/header.php');
 ?>
 <h1>Team List</h1>
-
 <aside>
 <!-- display a list of leagues -->
 <h2>Leagues</h2>
@@ -65,9 +80,9 @@ include('includes/header.php');
 <table>
 <tr>
 <th>Image</th>
-<th>Name</th>
+<th onclick= "sort">Name</th>
 <th>Date Founded</th>
-<th>Value</th>
+<th>Value(M)</th>
 <th>Colour</th>
 <th>Delete</th>
 <th>Edit</th>
@@ -100,6 +115,7 @@ value="<?php echo $team['leagueID']; ?>">
 </table>
 <!-- <a href="database.php?dir=asc">Order ascending</a> 
 <a href="database.php?dir=desc">Order descending</a> -->
+<a href='index.php?hello=true'>Sort</a>
 <p><a href="add_team_form.php">Add team</a></p>
 <p><a href="league_list.php">Manage Leagues</a></p>
 </section>

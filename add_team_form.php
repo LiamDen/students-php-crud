@@ -27,7 +27,8 @@ include('includes/header.php');
             </select>
             <br>
             <label>Name:</label>
-            <input type="input" name="name" required placeholder = "Team Name">
+            <input type="input" name="name" id="username" onBlur="username_validation(); " required>
+            <span id="name_err"></span>
             <br>
 
             <label>List Value:</label>
@@ -39,7 +40,7 @@ include('includes/header.php');
             <br>
             
             <label>colour:</label>
-            <input type="input" name="colour">
+            <input type="input" name="colour" required>
             <br>
             
             <label>Image:</label>
@@ -51,6 +52,7 @@ include('includes/header.php');
             <br>
         </form>
         <p><a href="index.php">View Homepage</a></p>
+        <script src="validation.js"></script>
     <?php
 include('includes/footer.php');
 ?>

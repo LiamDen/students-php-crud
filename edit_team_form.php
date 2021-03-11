@@ -29,8 +29,8 @@ include('includes/header.php');
             <br>
 
             <label>Name:</label>
-            <input type="input" name="name"
-                   value="<?php echo $teams['name']; ?>">
+            <input type="input" name="name" id="username" onBlur="username_validation(); " required>
+            <span id="name_err"></span>
             <br>
 
             <label>Founding Date:</label>
@@ -60,6 +60,7 @@ include('includes/header.php');
             <br>
         </form>
         <p><a href="index.php">View Homepage</a></p>
+        <script src="validation.js"></script>
     <?php
 include('includes/footer.php');
 ?>
