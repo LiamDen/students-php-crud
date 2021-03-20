@@ -5,7 +5,7 @@
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-
+<script language="JavaScript" src="scripts/gen_validatorv31.js" type="text/javascript"></script>
 </head>
 
 <!-- the body section -->
