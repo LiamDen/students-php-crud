@@ -10,4 +10,11 @@
 
 <!-- the body section -->
 <body>
-<header><h1>English Teams</h1></header>
+<header><h1>English Teams</h1>
+<div class="topnav">
+  <a class="active" href="index.php">Home</a>
+  <a href="add_team_form.php">Add Team</a>
+  <a href="league_list.php">Manage Leagues</a>
+  <a href="contact.php">Contact</a>
+</div>
+</header>
