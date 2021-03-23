@@ -16,5 +16,7 @@
   <a href="add_team_form.php">Add Team</a>
   <a href="league_list.php">Manage Leagues</a>
   <a href="contact.php">Contact</a>
+  <a href="login.php">Login</a>
+  <a href="register.php">Register</a>
 </div>
 </header>
