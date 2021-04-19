@@ -52,7 +52,7 @@ header .topnav a.active {
 
 body {
   background-image: url("../image_uploads/stadium.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: 100%;
 }
 
