@@ -9,6 +9,7 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="validation.js"></script>
 </head>
 
 
@@ -110,7 +111,7 @@ if(isset($_POST['register'])){
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="email" id="email" placeholder="Your Email"/>
+                                <input type="text" name="email" id="email" placeholder="Your Email" onBlur="email_validation()"/>
                             </div>
                             <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
@@ -126,6 +127,7 @@ if(isset($_POST['register'])){
                             </div>
                         </form>
                     </div>
+                    <script src="validation.js"></script>
                     <div class="signup-image">
                         <figure><img src="image_uploads/signup-image.jpg" alt="sing up image"></figure>
                         <h1><a href="login.php" class="signup-image-link">I am already member</a></h1>
@@ -133,4 +135,3 @@ if(isset($_POST['register'])){
                 </div>
             </div>
         </section>
-

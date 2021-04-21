@@ -17,5 +17,20 @@ function username_validation(){
     }
     }
     //user id validation ends
-    //password validation starts
-    
+    //email validation starts
+    function email_validation() {
+        'use strict';
+        var idformat = /^(.+)@(.+)$/;
+        var id_name = document.getElementById("email");
+        var id_value = document.getElementById("email").value;
+        var id_length = id_value.length;
+        if (!id_value.match(idformat) || id_length === 0) {
+            document.getElementById('email_err').innerHTML = 'This is not a valid email the format is example@example.com.';
+            id_name.focus();
+            document.getElementById('email_err').style.color = "#FF0000";
+        }
+        else {
+            document.getElementById('email_err').innerHTML = 'Valid Email';
+            document.getElementById('email_err').style.color = "#00AF33";
+        }
+    }
