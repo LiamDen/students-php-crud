@@ -39,6 +39,7 @@ if(isset($_POST['register'])){
     //Retrieve the field values from our registration form.
     $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
     $pass = !empty($_POST['password']) ? trim($_POST['password']) : null;
+    $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
     
     //TO ADD: Error checking (username characters, password length, etc).
     //Basically, you will need to add your own error checking BEFORE
@@ -72,12 +73,13 @@ if(isset($_POST['register'])){
     
     //Prepare our INSERT statement.
     //Remember: We are inserting a new row into our users table.
-    $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
+    $sql = "INSERT INTO users (username, password, email) VALUES (:username, :password, :email)";
     $stmt = $pdo->prepare($sql);
     
     //Bind our variables.
     $stmt->bindValue(':username', $username);
     $stmt->bindValue(':password', $passwordHash);
+    $stmt->bindValue(':email', $email);
 
     //Execute the statement and insert the new account.
     $result = $stmt->execute();
@@ -107,6 +109,10 @@ if(isset($_POST['register'])){
                                 <input type="text" name="username" id="username" placeholder="Your Username"/>
                             </div>
                             <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="password" placeholder="Password"/>
                             </div>
@@ -116,7 +122,7 @@ if(isset($_POST['register'])){
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="register"class="form-submit" value="Register"/>
+                                <input type="submit" name="register"class="form-submit" value="Register" />
                             </div>
                         </form>
                     </div>
