@@ -1,26 +1,8 @@
 
 <?php
 
-/**
- * Start the session.
- */
-session_start();
-
-/**
- * Check if the user is logged in.
- */
-if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
-    //User not logged in. Redirect them back to the login.php page.
-    header('Location: login.php');
-    exit;
-}
 
 
-/**
- * Print out something that only logged in users can see.
- */
-
-echo 'Congratulations! You are logged in!';
 require_once('database.php');
 
 // Get league ID
@@ -106,8 +88,7 @@ include('includes/header.php');
 <th>Date Founded</th>
 <th>Value(M)</th>
 <th>Colour</th>
-<th>Delete</th>
-<th>Edit</th>
+
 </tr>
 <?php foreach ($teams as $team) : ?>
 <tr>
@@ -116,22 +97,6 @@ include('includes/header.php');
 <td class="right"><?php echo $team['foundingDate']; ?></td>
 <td class="right"><?php echo $team['value']; ?></td>
 <td class="right"><?php echo $team['colour']; ?></td>
-<td><form action="delete_team.php" method="post"
-id="delete_team_form">
-<input type="hidden" name="team_id"
-value="<?php echo $team['teamID']; ?>">
-<input type="hidden" name="league_id"
-value="<?php echo $team['leagueID']; ?>">
-<input type="submit" value="Delete">
-</form></td>
-<td><form action="edit_team_form.php" method="post"
-id="delete_team_form">
-<input type="hidden" name="team_id"
-value="<?php echo $team['teamID']; ?>">
-<input type="hidden" name="league_id"
-value="<?php echo $team['leagueID']; ?>">
-<input type="submit" value="Edit">
-</form></td>
 </tr>
 <?php endforeach; ?>
 </table>
