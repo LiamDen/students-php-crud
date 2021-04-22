@@ -1,38 +1,161 @@
-DROP DATABASE IF EXISTS serversideca;
-CREATE DATABASE IF NOT EXISTS serversideca;
-USE serversideca;
-Drop Table if exists teams, league;
+-- phpMyAdmin SQL Dump
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 22, 2021 at 03:57 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.1
 
-CREATE TABLE leagues (
-  leagueID int(11) NOT NULL AUTO_INCREMENT,
-  leagueName varchar(255) NOT NULL,
-	PRIMARY KEY (leagueID)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-CREATE TABLE teams (
-  `teamID` int(11) NOT NULL AUTO_INCREMENT,
-  `foundingDate` DATE NOT NULL,
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `serversideca`
+--
+CREATE DATABASE IF NOT EXISTS `serversideca` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `serversideca`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leagues`
+--
+
+DROP TABLE IF EXISTS `leagues`;
+CREATE TABLE `leagues` (
   `leagueID` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `value` decimal(10,2) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `colour` varchar(255) NOT NULL,
-    PRIMARY KEY (teamID),
-FOREIGN KEY (leagueID) REFERENCES leagues(leagueID));
+  `leagueName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `leagues`
+--
 
 INSERT INTO `leagues` (`leagueID`, `leagueName`) VALUES
 (1, 'Premier League'),
 (2, 'Championship');
 
-INSERT INTO `teams` (`teamID`, `foundingDate`, `leagueID`, `name`, `value`, `image`,`colour`) VALUES
-(1, '1874-11-24',  1, 'Aston Villa', '999', '', 'Red/ Blue'),
-(2, '1877-01-01', 1, 'Everton', '750', '', 'Blue'),
-(3, '1878-01-01',  1, 'Manchester United', '875', '', 'Red'),
-(4, '1880-01-01', 1, 'Manchester City', '1250.20','', 'Blue'),
-(5, '1882-09-05',  1, 'Tottenham Hotspur', '1205', '', 'White'),
-(6, '1892-03-15', 1, 'Liverpool', '750', '', 'Red'),
-(7, '1863-01-01',  2, 'Stoke City', '999','', 'Red/ White'),
-(8, '1867-01-01',  2, 'Sheffield Wednesday', '600', '' , 'Blue/ White'),
-(9, '1881-01-01', 2, 'Watford', '160.50', '', 'Yellow'),
-(10, '1882-01-01',  2, 'QPR', '200', '', 'Blue/ White');
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teams`
+--
+
+DROP TABLE IF EXISTS `teams`;
+CREATE TABLE `teams` (
+  `teamID` int(11) NOT NULL,
+  `foundingDate` date NOT NULL,
+  `leagueID` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `value` decimal(10,2) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `colour` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teams`
+--
+
+INSERT INTO `teams` (`teamID`, `foundingDate`, `leagueID`, `name`, `value`, `image`, `colour`) VALUES
+(1, '1874-11-24', 1, 'Aston Villa', '298.17', '486030.png', 'Red/ Blue'),
+(2, '1877-01-01', 1, 'Everton', '442.35', '820876.png', 'Blue'),
+(4, '1880-01-01', 1, 'Manchester City', '950.00', '279307.png', 'Blue'),
+(5, '1882-09-05', 1, 'Tottenham Hotspur', '647.00', '214193.png', 'White'),
+(6, '1892-03-15', 1, 'Liverpool', '1000.00', '301262.png', 'Red'),
+(7, '1863-01-01', 2, 'Stoke City', '50.99', '617300.png', 'Red/ White'),
+(8, '1867-01-01', 2, 'Sheffield Wednesday', '26.96', '853739.png', 'Blue/ White'),
+(9, '1881-01-01', 2, 'Watford', '81.86', '659276.png', 'Yellow'),
+(10, '1882-01-01', 2, 'QPR', '25.88', '919326.png', 'Blue/ White'),
+(11, '2003-01-01', 1, 'Chelsea', '723.00', '654585.png', 'Blue'),
+(12, '1878-01-01', 1, 'Manchester United', '664.00', '73145.png', 'Red');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `Email` varchar(70) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `Email`) VALUES
+(1, 'admin', '$2y$12$keFSHlBiSed/FZDH8sPuwuwJ/kxmXrgFMJiCk.FLLcoINST6QC.my', 'admin@admin.net'),
+(11, 'Liam', '$2y$12$ZAPqEjJAcNfB3qJC8Jj3kuzd2IpXYO82jpUlOVXY3z5m5Hy7JiHZW', 'liamdenning@hotmail.com');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `leagues`
+--
+ALTER TABLE `leagues`
+  ADD PRIMARY KEY (`leagueID`);
+
+--
+-- Indexes for table `teams`
+--
+ALTER TABLE `teams`
+  ADD PRIMARY KEY (`teamID`),
+  ADD KEY `leagueID` (`leagueID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `leagues`
+--
+ALTER TABLE `leagues`
+  MODIFY `leagueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `teams`
+--
+ALTER TABLE `teams`
+  MODIFY `teamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `teams`
+--
+ALTER TABLE `teams`
+  ADD CONSTRAINT `teams_ibfk_1` FOREIGN KEY (`leagueID`) REFERENCES `leagues` (`leagueID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
