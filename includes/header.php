@@ -21,6 +21,7 @@
   <a href="add_team_form.php">Add Team</a>
   <a href="league_list.php">Manage Leagues</a>
   <a href="manage_teams.php">Manage Teams</a>
+  <a href="manage_users.php">Manage Users</a>
   ';
   }?>
 
